@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lounge: private rooms to talk and watch together</title>
+<meta name="description" content="Create a password-protected room, talk with video and mic, and share a movie or music with everyone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="lobby">
+  <div class="intro">
+    <span class="logo">Lounge</span>
+    <h1>Your own room. Only people with the password get in.</h1>
+    <p>Talk with voice and video, then share a browser tab or window, like a movie, a YouTube video or a playlist, so everyone watches and listens together.</p>
+    <p class="hint">Best on a desktop with Chrome or Edge for screen sharing. Wear headphones to avoid echo.</p>
+  </div>
+  <form id="panel" class="panel">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tCreate" aria-selected="true">Create a room</button>
+      <button type="button" role="tab" id="tJoin" aria-selected="false">Join a room</button>
+    </div>
+    <label>Your name<input id="fName" maxlength="24" autocomplete="nickname" required></label>
+    <label>Room name<input id="fRoom" maxlength="32" placeholder="friday-movie-night" required></label>
+    <label>Password<input id="fPw" type="password" minlength="4" autocomplete="off" required></label>
+    <button class="btn" id="go" type="submit">Create room</button>
+    <p id="err" class="err" role="alert"></p>
+  </form>
+</div>
+
+<div id="room" hidden>
+  <div class="bar">
+    <div><strong id="rName"></strong><span id="rCount" class="muted"></span></div>
+    <button class="btn ghost" id="invite">Copy invite link</button>
+  </div>
+  <div id="grid" class="grid"></div>
+  <div class="ctrl">
+    <button class="cb" id="bMic" aria-pressed="false">Mute</button>
+    <button class="cb" id="bCam" aria-pressed="false">Camera off</button>
+    <button class="cb" id="bShare" aria-pressed="false">Share screen</button>
+    <button class="cb leave" id="bLeave">Leave</button>
+  </div>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
